@@ -1,0 +1,47 @@
+/* Shared Styles */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Arial', sans-serif; }
+body { background-color: #0d0d0d; color: white; overflow-x: hidden; text-align: center; }
+
+/* === HUB SCREEN === */
+.main-screen-container { position: relative; width: 100vw; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; }
+.main-title { font-size: 3.5rem; letter-spacing: 5px; margin-bottom: 50px; text-shadow: 0 0 20px rgba(168, 85, 247, 0.5); }
+.cards-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1200px; }
+.hub-card { background: rgba(255,255,255,0.05); border: 2px solid #a855f7; border-radius: 15px; width: 280px; height: 150px; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+.hub-card:hover { transform: translateY(-5px); background: #a855f7; color: white; box-shadow: 0 10px 30px rgba(168, 85, 247, 0.5); }
+
+/* === LIVE QUESTION SCREEN === */
+.back-btn { position: absolute; top: 30px; left: 30px; background: transparent; color: white; border: 2px solid white; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; transition: 0.3s; }
+.back-btn:hover { background: white; color: black; }
+.qr-container { background: white; padding: 20px; border-radius: 15px; margin-bottom: 50px; display: inline-block; }
+.live-question { font-size: 4.5rem; width: 80%; color: white; text-shadow: 0 0 20px rgba(255,255,255,0.3); line-height: 1.3; }
+
+/* === MOBILE CONTROLLER === */
+.mobile-container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; transition: background-color 0.5s; }
+.phase-container { display: none; flex-direction: column; align-items: center; width: 100%; height: 100%; }
+.phase-container.active { display: flex; }
+h1 { margin-bottom: 30px; font-size: 2.2rem; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+
+/* Mobile Grids */
+.color-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 400px; }
+.color-btn { padding: 30px 10px; font-size: 1.3rem; font-weight: bold; border-radius: 10px; border: 2px solid rgba(255,255,255,0.5); color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); cursor: pointer; }
+.word-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 400px; }
+.word-btn { background: rgba(0,0,0,0.4); color: white; border: 2px solid white; padding: 30px 10px; font-size: 1.5rem; border-radius: 10px; font-weight: bold; cursor: pointer; }
+
+/* Fullscreen Carousel */
+.fullscreen-phase { justify-content: center; position: relative; }
+.carousel-container.fullscreen { width: 100vw; height: 60vh; overflow: hidden; position: relative; margin-top: 50px; }
+.carousel.fullscreen { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 30px; padding: 0 50vw; height: 100%; align-items: center; }
+.carousel::-webkit-scrollbar { display: none; }
+.carousel-card { scroll-snap-align: center; flex: 0 0 200px; height: 300px; background: rgba(255,255,255,0.2); border: 5px solid white; display: flex; align-items: center; justify-content: center; font-size: 8rem; font-weight: bold; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); cursor: pointer; }
+.carousel-card:active { transform: scale(0.95); }
+
+/* Background Colors */
+.bg-red { background-color: #ff4d4d; } .bg-orange { background-color: #ffa64d; } .bg-yellow { background-color: #d4d400; }
+.bg-green { background-color: #33cc33; } .bg-blue { background-color: #4d4dff; } .bg-indigo { background-color: #8a2be2; } .bg-violet { background-color: #ee82ee; }
+
+/* Toast & Success Overlay */
+.toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #ff3333; padding: 15px 30px; border-radius: 10px; font-size: 1.5rem; font-weight: bold; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+.toast.show { opacity: 1; }
+.success-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #ffffff; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 2000; }
+.success-overlay.show { opacity: 1; pointer-events: all; }
+.giant-letter { font-size: 25rem; font-weight: bold; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin-bottom: 20px; }
