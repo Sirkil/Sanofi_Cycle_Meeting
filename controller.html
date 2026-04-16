@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rainbow Controller</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #222;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Mobile-Responsive Grid Layout for Buttons */
+        #controller {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 500px; /* Limits width on larger screens */
+        }
+
+        /* Large touch targets for mobile */
+        button {
+            padding: 20px 10px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.1s, opacity 0.2s;
+            /* Prevents double-tap zooming on mobile */
+            touch-action: manipulation; 
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        button:disabled {
+            filter: grayscale(100%);
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Button Colors */
+        .btn-red { background-color: #ff0000; }
+        .btn-orange { background-color: #ffa500; }
+        .btn-yellow { background-color: #ffff00; color: #333; }
+        .btn-green { background-color: #008000; }
+        .btn-blue { background-color: #0000ff; }
+        .btn-indigo { background-color: #4b0082; }
+        .btn-violet { background-color: #ee82ee; color: #333; }
+    </style>
+</head>
+<body>
+
+    <h2>Color Control</h2>
+
+    <div id="controller">
+        <button class="btn-red" onclick="sendColor('#ff0000', this)">Red</button>
+        <button class="btn-orange" onclick="sendColor('#ffa500', this)">Orange</button>
+        <button class="btn-yellow" onclick="sendColor('#ffff00', this)">Yellow</button>
+        <button class="btn-green" onclick="sendColor('#008000', this)">Green</button>
+        <button class="btn-blue" onclick="sendColor('#0000ff', this)">Blue</button>
+        <button class="btn-indigo" onclick="sendColor('#4b0082', this)">Indigo</button>
+        <button class="btn-violet" onclick="sendColor('#ee82ee', this)">Violet</button>
+    </div>
+
+    <script>
+        function sendColor(colorHex, buttonElement) {
+            // Disable the button immediately
+            buttonElement.disabled = true;
+
+            // Send the signal to the other page
+            // We add a timestamp separated by a '|' so the browser sees it as a 
+            // "new" event every time, even if the user somehow clicks the same color
+            const command = colorHex + '|' + Date.now();
+            localStorage.setItem('rainbowCommand', command);
+        }
+    </script>
+</body>
+</html>
